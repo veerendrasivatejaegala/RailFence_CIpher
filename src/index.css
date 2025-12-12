@@ -1,0 +1,167 @@
+/* -------------- Fonts -------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* -------------- Theme variables -------------- */
+:root{
+  --bg: rgb(89, 133, 245); /* DO NOT CHANGE - user's request */
+  --card: rgba(255,255,255,0.95);
+  --muted: #6b7280;
+  --accent: #0f172a;
+  --primary1: #3b82f6;
+  --primary2: #06b6d4;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 12px;
+  --shadow-1: 0 6px 18px rgba(15, 23, 42, 0.12);
+  --shadow-2: 0 10px 30px rgba(2,6,23,0.12);
+}
+
+/* -------------- Base -------------- */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
+body{
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-color: var(--bg); /* left intact */
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color: var(--accent);
+}
+
+/* -------------- Page layout -------------- */
+.ComponentUi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px 20px;
+}
+
+/* Title */
+.ComponentUi{
+  font-family: Geom;
+  font-weight: 800;
+  font-size: 70px;
+}
+
+/* Container (the component itself) */
+.LogicComponent {
+  width: min(980px, 96%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.98));
+  border-radius: calc(var(--radius) + 4px);
+  padding: 28px;
+  box-shadow: var(--shadow-1), var(--shadow-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(10, 20, 40, 0.06);
+}
+
+/* -------------- Inputs -------------- */
+.InputBox {
+  width: 100%;
+  max-width: 820px;
+  height: 60px;
+  font-size: 20px;
+  text-align: left;
+  padding: 12px 18px;
+  margin: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(11,22,40,0.06);
+  outline: none;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  box-shadow: 0 6px 20px rgba(11,22,40,0.04) inset;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* center placeholder text slightly muted */
+.InputBox::placeholder {
+  color: rgba(7,16,51,0.45);
+  font-weight: 400;
+}
+
+/* focus style */
+.InputBox:focus {
+  transform: translateY(-2px);
+  border-color: rgba(59,130,246,0.9);
+  box-shadow: 0 6px 28px rgba(37,99,235,0.08);
+}
+
+/* For small screens stack nicely */
+@media (max-width:820px){
+  .InputBox { max-width: 100%; height: 54px; font-size: 18px; padding: 10px 14px; }
+}
+
+/* -------------- Buttons -------------- */
+.OutputRetrivalButton {
+  width: 160px;
+  height: 48px;
+  margin-top: 6px;
+  background: linear-gradient(90deg, var(--primary1), var(--primary2));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(14, 76, 208, 0.12);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+/* hover / active */
+.OutputRetrivalButton:hover { transform: translateY(-3px); }
+.OutputRetrivalButton:active { transform: translateY(0); opacity: 0.95; }
+
+/* -------------- Output Box -------------- */
+.OutputBox {
+  width: min(820px, 100%);
+  max-width: 820px;
+  min-height: 64px;
+  margin-top: 12px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(11,22,40,0.06);
+  border: 1px solid rgba(9,18,40,0.05);
+}
+
+/* cipher text styling */
+.OutputBox h1 {
+  margin: 0;
+  font-size: clamp(16px, 2.6vw, 28px);
+  font-weight: 700;
+  color: #000000;
+  word-break: break-word;
+  text-align: left;
+  padding-right: 6px;
+  flex: 1;
+  font-family: 'Poppins', 'Courier New', monospace;
+}
+
+/* optional small label (if you add later) */
+.OutputBox .label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* -------------- Small utilities -------------- */
+.small-note {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* responsive adjustments */
+@media (max-width:520px){
+  .LogicComponent { padding: 18px; gap: 10px; }
+  .OutputRetrivalButton { width: 140px; height: 44px; }
+  .OutputBox { padding: 10px; min-height: 56px; }
+  .InputBox { height: 50px; font-size: 16px; }
+}
